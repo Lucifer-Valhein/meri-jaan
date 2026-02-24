@@ -2,99 +2,150 @@
 <html>
 <head>
     <title>Meri Jaan ❤️</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <style>
-                    body {
-                                margin: 0;
-                                            background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
-                                                        display: flex;
-                                                                    justify-content: center;
-                                                                                align-items: center;
-                                                                                            height: 100vh;
-                                                                                                        font-family: 'Segoe UI', sans-serif;
-                                                                                                                    color: white;
-                                                                                                                                overflow: hidden;
-                                                                                                                                            text-align: center;
-                                                                                                                                                    }
+    <style>
+        body {
+            margin: 0;
+            background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+            overflow: hidden;
+            text-align: center;
+        }
 
-                                                                                                                                                            .container {
-                                                                                                                                                                        max-width: 700px;
-                                                                                                                                                                                    padding: 20px;
-                                                                                                                                                                                            }
+        /* Stars Background */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: transparent url("https://www.transparenttextures.com/patterns/stardust.png");
+            animation: moveStars 60s linear infinite;
+            opacity: 0.3;
+        }
 
-                                                                                                                                                                                                    h1 {
-                                                                                                                                                                                                                font-size: 42px;
-                                                                                                                                                                                                                            margin-bottom: 20px;
-                                                                                                                                                                                                                                        animation: glow 2s infinite alternate;
-                                                                                                                                                                                                                                                }
+        @keyframes moveStars {
+            from { transform: translate(0,0); }
+            to { transform: translate(-500px,-500px); }
+        }
 
-                                                                                                                                                                                                                                                        p {
-                                                                                                                                                                                                                                                                    font-size: 22px;
-                                                                                                                                                                                                                                                                                line-height: 1.6;
-                                                                                                                                                                                                                                                                                            min-height: 150px;
-                                                                                                                                                                                                                                                                                                    }
+        .container {
+            max-width: 750px;
+            padding: 20px;
+            z-index: 2;
+            animation: fadeIn 3s ease-in-out;
+        }
 
-                                                                                                                                                                                                                                                                                                            @keyframes glow {
-                                                                                                                                                                                                                                                                                                                        from { text-shadow: 0 0 10px #ff4d6d; }
-                                                                                                                                                                                                                                                                                                                                    to { text-shadow: 0 0 25px #ff4d6d; }
-                                                                                                                                                                                                                                                                                                                                            }
+        h1 {
+            font-size: 44px;
+            margin-bottom: 20px;
+            animation: glow 2s infinite alternate;
+        }
 
-                                                                                                                                                                                                                                                                                                                                                    .heart {
-                                                                                                                                                                                                                                                                                                                                                                position: absolute;
-                                                                                                                                                                                                                                                                                                                                                                            color: #ff4d6d;
-                                                                                                                                                                                                                                                                                                                                                                                        font-size: 20px;
-                                                                                                                                                                                                                                                                                                                                                                                                    animation: float 6s linear infinite;
-                                                                                                                                                                                                                                                                                                                                                                                                            }
+        h1 span {
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+        }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                    @keyframes float {
-                                                                                                                                                                                                                                                                                                                                                                                                                                0% { transform: translateY(100vh); opacity: 1; }
-                                                                                                                                                                                                                                                                                                                                                                                                                                            100% { transform: translateY(-10vh); opacity: 0; }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        </style>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        </head>
+        p {
+            font-size: 22px;
+            line-height: 1.7;
+            min-height: 180px;
+        }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        <body>
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ff4d6d; }
+            to { text-shadow: 0 0 30px #ff4d6d; }
+        }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="container">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            <h1>Meri Jaan ❤️</h1>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p id="message"></p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                <script>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    const text = "Happy Monthesary, my love.\n\nEven with miles between us, my heart has never felt closer to yours.\n\nYou are my peace, my comfort, my favorite forever.\n\nEvery day apart is one day closer to holding you again.";
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        let i = 0;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            const speed = 40;
+        .heart {
+            position: absolute;
+            color: #ff4d6d;
+            animation: float 6s linear infinite;
+        }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                function typeWriter() {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        if (i < text.length) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    document.getElementById("message").innerHTML += 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    text.charAt(i) === "\n" ? "<br><br>" : text.charAt(i);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                i++;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            setTimeout(typeWriter, speed);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            typeWriter();
+        .footer {
+            margin-top: 20px;
+            font-size: 18px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                // Floating hearts
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    function createHeart() {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            const heart = document.createElement("div");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    heart.className = "heart";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            heart.innerHTML = "❤️";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    heart.style.left = Math.random() * 100 + "vw";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            heart.style.fontSize = Math.random() * 20 + 15 + "px";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    heart.style.animationDuration = Math.random() * 3 + 4 + "s";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            document.body.appendChild(heart);
+<body>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    setTimeout(() => {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                heart.remove();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }, 6000);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+<div class="container">
+    <h1>Meri Jaan <span>❤️</span></h1>
+    <p id="message"></p>
+    <div class="footer">Forever Yours 💞</div>
+</div>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                setInterval(createHeart, 500);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </script>
+<script>
+const text = `Happy Monthesary, meri jaan... ❤️
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </body>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </html>
+Even with miles between us, my heart beats only for you.
+
+You are my peace in chaos,
+my warmth in cold nights,
+my comfort when everything feels heavy.
+
+Every second without you feels incomplete,
+but every day brings us one step closer
+to holding each other again.
+
+I don't just love you...
+I choose you.
+Today. Tomorrow. Always. 💖`;
+
+let i = 0;
+const speed = 35;
+
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("message").innerHTML += 
+            text.charAt(i) === "\n" ? "<br><br>" : text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+    }
+}
+
+typeWriter();
+
+// Floating hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
